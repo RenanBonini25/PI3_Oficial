@@ -74,6 +74,14 @@ a{
     margin-right: 1px;
     background-color: #8B7355;
 }
+#corpoRelatorio{
+    float: right;
+    margin-top: -95px;
+    border-radius: 10px;
+    width: 80%;
+    margin-right: 1px;
+    background-color: #8B7355;
+}
 #imgHome{
     border-radius: 10px;
     width: 100%;

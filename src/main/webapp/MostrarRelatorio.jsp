@@ -33,7 +33,7 @@
                 </ul>
             </nav>		
         </div>
-        <div id="corpo">
+        <div id="corpoRelatorio">
             <table cellpadding="10">
                 <tr>
                     <td><strong>Cliente</strong></td>
