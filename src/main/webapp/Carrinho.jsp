@@ -48,7 +48,7 @@
                             <td>${item.produto.nome}</td>
                             <td>${item.quantidade}</td>
                             <td>${item.subtotal}</td>
-
+                            
                         </tr>
                     </c:forEach>
                         <tr>

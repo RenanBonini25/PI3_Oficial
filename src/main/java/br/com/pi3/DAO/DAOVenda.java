@@ -115,8 +115,8 @@ public class DAOVenda {
         ArrayList<Venda> listaVendas = new ArrayList<>();
 //        String inicio = new SimpleDateFormat("dd/MM/yyyy").format(dataInicio);
 //        String termino = new SimpleDateFormat("dd/MM/yyyy").format(dataTermino);
-        String query = "SELECT Cliente.Id, Venda.ID_VENDA, Venda.Id_Cliente,Venda.Data_Venda, Venda.Valor_Venda FROM Venda\n"
-                + "INNER JOIN Cliente ON Cliente.Id = Venda.Id_Cliente\n"
+        String query = "SELECT Cliente.Id_Cliente, Venda.ID_VENDA, Venda.Id_Cliente,Venda.Data_Venda, Venda.Valor_Venda FROM Venda\n"
+                + "INNER JOIN Cliente ON Cliente.Id_Cliente = Venda.Id_Cliente\n"
                 + "WHERE Venda.Data_Venda BETWEEN '" + dataInicio + "' AND '" + dataTermino + "'";
         try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);

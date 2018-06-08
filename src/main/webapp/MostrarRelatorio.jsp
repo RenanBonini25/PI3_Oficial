@@ -47,7 +47,7 @@
                     <tr>
                         <td>${venda.cliente.nome}</td>
                         <td>${venda.dataVenda}</td>
-                        <td>${venda.total}</td>
+                        <td>R$ ${venda.total}</td>
 
                     </tr>
                     
@@ -60,7 +60,7 @@
                         <tr>
                             <td>Produto: ${itemcarrinho.produto.nome}</td>
                             <td>Quantidade: ${itemcarrinho.quantidade}</td>
-                            <td>Subtotal: ${itemcarrinho.subtotal}</td>
+                            <td>Subtotal: R$ ${itemcarrinho.subtotal}</td>
 
                         </tr>
                     </c:forEach>

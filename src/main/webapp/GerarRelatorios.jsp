@@ -34,6 +34,8 @@
         </div>
         <div id="corpo">
             <form action="${pageContext.request.contextPath}/GerarRelatorios" method="post" id="formularioCadastro">
+                <h2>Relatórios</h2>
+                <p>Insira as datas do período desejado</p>
                 <input type="date" name="dataInicio" placeholder="DATA INICIO">
                 </br></br>
                 <input type="date" name="dataTermino" placeholder="DATA TERMINO">

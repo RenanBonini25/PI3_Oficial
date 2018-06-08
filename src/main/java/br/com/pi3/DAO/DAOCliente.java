@@ -72,7 +72,7 @@ public class DAOCliente {
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();
-                        cliente.setId(resultados.getInt("ID"));
+                        cliente.setId(resultados.getInt("ID_CLIENTE"));
                         cliente.setNome(resultados.getString("NOME"));
                         cliente.setCpf(resultados.getString("CPF"));
                         cliente.setSexo(resultados.getString("SEXO"));
@@ -110,7 +110,7 @@ public class DAOCliente {
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();
-                        cliente.setId(resultados.getInt("ID"));
+                        cliente.setId(resultados.getInt("ID_CLIENTE"));
                         cliente.setNome(resultados.getString("NOME"));
                         cliente.setCpf(resultados.getString("CPF"));
                         cliente.setSexo(resultados.getString("SEXO"));
@@ -144,7 +144,7 @@ public class DAOCliente {
 
     public static ArrayList<Cliente> obterCliente(int id) {
         ArrayList<Cliente> clientes = new ArrayList<>();
-        String query = "SELECT * FROM CLIENTE WHERE ID = ?";
+        String query = "SELECT * FROM CLIENTE WHERE ID_CLIENTE = ?";
         try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -152,7 +152,7 @@ public class DAOCliente {
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();
-                        cliente.setId(resultados.getInt("ID"));
+                        cliente.setId(resultados.getInt("ID_CLIENTE"));
                         cliente.setNome(resultados.getString("NOME"));
                         cliente.setCpf(resultados.getString("CPF"));
                         cliente.setSexo(resultados.getString("SEXO"));
@@ -184,7 +184,7 @@ public class DAOCliente {
     }
     
     public static Cliente obterClienteIndiv(int id) {
-        String query = "SELECT * FROM CLIENTE WHERE ID = ? AND ATIVO = ?";
+        String query = "SELECT * FROM CLIENTE WHERE ID_CLIENTE = ? AND ATIVO = ?";
         try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -193,7 +193,7 @@ public class DAOCliente {
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();
-                        cliente.setId(resultados.getInt("ID"));
+                        cliente.setId(resultados.getInt("ID_CLIENTE"));
                         cliente.setNome(resultados.getString("NOME"));
                         cliente.setCpf(resultados.getString("CPF"));
                         cliente.setSexo(resultados.getString("SEXO"));
@@ -225,7 +225,7 @@ public class DAOCliente {
 
     public static void atualizarCliente(Cliente cliente) {
         String query = "UPDATE CLIENTE SET NOME=?, CPF=?, SEXO=?, DTNASCIMENTO=?, ESTADOCIVIL=?,"
-                + "ENDERECO=?, COMPLEMENTO=?, NUMERO=?, BAIRRO=?, CEP=?, CIDADE=?, ESTADO=? WHERE ID=?";
+                + "ENDERECO=?, COMPLEMENTO=?, NUMERO=?, BAIRRO=?, CEP=?, CIDADE=?, ESTADO=? WHERE ID_CLIENTE=?";
         try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -258,7 +258,7 @@ public class DAOCliente {
     }
 
     public static void excluirCliente(int id) {
-        String query = "DELETE FROM CLIENTE WHERE ID = ?";
+        String query = "DELETE FROM CLIENTE WHERE ID_CLIENTE = ?";
         try (Connection conn = obterConexao()) {
             try (PreparedStatement stmtCategoria = conn.prepareStatement(query)) {
                 stmtCategoria.setInt(1, id);
