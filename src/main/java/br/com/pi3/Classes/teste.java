@@ -6,6 +6,7 @@
 package br.com.pi3.Classes;
 
 import br.com.pi3.DAO.DAOProduto;
+import br.com.pi3.DAO.DAOVenda;
 import java.util.ArrayList;
 
 /**
@@ -14,9 +15,10 @@ import java.util.ArrayList;
  */
 public class teste {
     public static void main(String[] args) {
-        ArrayList<Produto> lista = DAOProduto.listar();
-        for (Produto produto : lista) {
-            System.out.println(produto.getNome());
+        ArrayList<Venda> lista = DAOVenda.gerarRelatorio("2018-06-08", "2018-06-08");
+        lista = DAOVenda.gerarRelatorioItems(lista, "2018-06-08", "2018-06-08");
+        for (Venda venda : lista) {
+            System.out.println(venda.getCarrinho().get(0).getQuantidade());
         }
     }
 }

@@ -28,7 +28,7 @@ public class FecharCompra extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
         Venda venda = new Venda();
         HttpSession session = request.getSession();
         ArrayList<ItemCarrinho> carrinho = 
