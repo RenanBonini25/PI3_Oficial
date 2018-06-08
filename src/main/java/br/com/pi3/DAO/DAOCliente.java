@@ -104,10 +104,11 @@ public class DAOCliente {
 
     public static ArrayList<Cliente> listar() {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
-        String query = "SELECT * FROM cliente";
+        String query = "SELECT * FROM cliente WHERE ATIVO = ?";
         try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setBoolean(1, true);
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();
@@ -150,7 +151,7 @@ public class DAOCliente {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setInt(1, id);
-                stmt.setBoolean(1, true);
+                stmt.setBoolean(2, true);
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();

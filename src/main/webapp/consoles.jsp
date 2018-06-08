@@ -6,6 +6,12 @@
         <meta charset="utf-8">
         <title>Jupiter - Console</title>
         <link rel="stylesheet" type="text/css" href="_css/estilo.css">
+        <script>
+            function exclusao()
+            {
+                alert("Console excluído com sucesso!");
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -30,6 +36,7 @@
                     <a href="${pageContext.request.contextPath}/ListagemFiliais"><li id="listaMenu"><img src="_imagens/filial.png">Filiais</li></a>
                     <a href="Vendas_ProcurarCliente.jsp"><li id="listaMenu"><img src="_imagens/venda.png">Vendas</li></a>
                     <a href="${pageContext.request.contextPath}/GerarRelatorios.jsp"><li id="listaMenu"><img src="_imagens/relatorio.png">Relatório</li></a>
+                    <a href="${pageContext.request.contextPath}/Logout"><li id="listaMenu"><img src="_imagens/power.png">Logout</li></a>
                 </ul>
             </nav>		
         </div>
@@ -55,7 +62,7 @@
                         <td>${console.precoVenda}</td>
                         <td>
                             <a href="EditarConsole?id=${console.id}" class="acoes">Editar</a> 
-                            <a href="ExcluirConsole?id=${console.id}" class="acoes">Deletar</a> 
+                            <a href="ExcluirConsole?id=${console.id}" class="acoes" onclick=exclusao()>Deletar</a> 
                         </td>
                     </tr>
                 </c:forEach>

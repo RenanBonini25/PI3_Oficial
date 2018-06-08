@@ -6,6 +6,12 @@
         <meta charset="utf-8">
         <title>Jupiter - Acessórios</title>
         <link rel="stylesheet" type="text/css" href="_css/estilo.css">
+        <script>
+            function exclusao()
+            {
+                alert("Acessório excluído com sucesso!");
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -30,6 +36,7 @@
                     <a href="${pageContext.request.contextPath}/ListagemFiliais"><li id="listaMenu"><img src="_imagens/filial.png">Filiais</li></a>
                     <a href="Vendas_ProcurarCliente.jsp"><li id="listaMenu"><img src="_imagens/venda.png">Vendas</li></a>
                     <a href="${pageContext.request.contextPath}/GerarRelatorios.jsp"><li id="listaMenu"><img src="_imagens/relatorio.png">Relatório</li></a>
+                    <a href="${pageContext.request.contextPath}/Logout"><li id="listaMenu"><img src="_imagens/power.png">Logout</li></a>
                 </ul>
             </nav>		
         </div>
@@ -57,7 +64,7 @@
                         <td>${acessorio.precoVenda}</td>
                         <td>
                             <a href="EditarAcessorio?id=${acessorio.id}" class="acoes">Editar</a> 
-                            <a href="ExcluirAcessorio?id=${acessorio.id}" class="acoes">Deletar</a> 
+                            <a href="ExcluirAcessorio?id=${acessorio.id}" class="acoes" onclick=exclusao()>Deletar</a> 
                         </td>
                     </tr>
                 </c:forEach>

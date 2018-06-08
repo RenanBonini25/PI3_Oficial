@@ -5,6 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Filiais</title>
         <link rel="stylesheet" type="text/css" href="_css/estilo.css">
+        <script>
+            function cadastro()
+            {
+                alert("Filial cadastrada com sucesso!");
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -29,6 +35,7 @@
                     <a href="${pageContext.request.contextPath}/ListagemFiliais"><li id="listaMenu"><img src="_imagens/filial.png">Filiais</li></a>
                     <a href="Vendas_ProcurarCliente.jsp"><li id="listaMenu"><img src="_imagens/venda.png">Vendas</li></a>
                     <a href="${pageContext.request.contextPath}/GerarRelatorios.jsp"><li id="listaMenu"><img src="_imagens/relatorio.png">Relatório</li></a>
+                    <a href="${pageContext.request.contextPath}/Logout"><li id="listaMenu"><img src="_imagens/power.png">Logout</li></a>
                 </ul>
             </nav>		
         </div>
@@ -80,7 +87,7 @@
                     <option value="Tocantins">Tocantins</option>
                 </select>
                 </br></br>
-                <input type="submit" value="SALVAR" id="botao">
+                <input type="submit" value="SALVAR" id="botao" onclick=cadastro()>
             </form>
         </div>
     </body>
