@@ -7,15 +7,18 @@ public abstract class Produto {
     private int quantidade;
     private double precoCompra;
     private double precoVenda;
+    private String tipo;
+    private boolean ativo;
 
     public Produto() {
     }
 
-    public Produto(String nome, int quantidade, double precoCompra, double precoVenda) {
+    public Produto(String nome, int quantidade, double precoCompra, double precoVenda, String tipo) {
         this.nome = nome;
         this.quantidade = quantidade;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
+        this.tipo = tipo;
     }
     
        
@@ -57,6 +60,14 @@ public abstract class Produto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
     

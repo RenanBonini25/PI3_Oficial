@@ -45,8 +45,8 @@
                 <input type="text" name="txtCor" placeholder="COR" class="formSelect">
                 <input type="number" name="txtQuantidade" placeholder="QUANTIDADE" class="formSelect">
                 </br></br>
-                <input type="number" name="txtPrecoCompra" placeholder="PREÇO COMPRA" class="formSelect">
-                <input type="number" name="txtPrecoVenda" placeholder="PREÇO VENDA" class="formSelect">
+                <input type="text" name="txtPrecoCompra" placeholder="PREÇO COMPRA" class="formSelect">
+                <input type="text" name="txtPrecoVenda" placeholder="PREÇO VENDA" class="formSelect">
                 </br></br>
                 <input type="submit" value="SALVAR" id="botao">
             </form>

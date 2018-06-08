@@ -1,6 +1,7 @@
 package br.com.pi3;
 
 import br.com.pi3.DAO.DAOAcessorio;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,7 @@ public class ExcluirAcessorio extends HttpServlet {
             throws ServletException, IOException {
         String idTemp = request.getParameter("id");
         int id = Integer.parseInt(idTemp);
-        DAOAcessorio.excluirAcessorio(id);
+        DAOProduto.excluir(id);
         response.sendRedirect("/pi3-1.0-SNAPSHOT/ListagemAcessorios");
     }
 

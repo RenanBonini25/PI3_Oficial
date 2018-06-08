@@ -36,7 +36,7 @@
         <div id="corpo">
             <form action="" method="" id="formularioCadastro">
                 <table cellpadding="10">
-                    <p>Produtos no Carrinho:</p>
+                    <h2>Produtos no Carrinho:</h2>
                     <tr>
                         <th>Nome</th>
                         <th>Quantidade</th>

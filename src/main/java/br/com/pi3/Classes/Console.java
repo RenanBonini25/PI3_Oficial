@@ -12,8 +12,8 @@ public class Console extends Produto {
     ;
     
     public Console(String nome, int quantidade, double precoCompra, double precoVenda,
-            String descricao, String fornecedor, String cor) {
-        super(nome, quantidade, precoCompra, precoVenda);
+            String tipo, String descricao, String fornecedor, String cor) {
+        super(nome, quantidade, precoCompra, precoVenda, tipo);
         this.descricao = descricao;
         this.fornecedor = fornecedor;
         this.cor = cor;

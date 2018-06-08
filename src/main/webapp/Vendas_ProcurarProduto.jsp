@@ -36,7 +36,7 @@
         <div id="corpo">
 
 
-            <form action="${pageContext.request.contextPath}/BuscarGame" method="post" id="formularioCadastro">
+            <form action="${pageContext.request.contextPath}/ProcurarProduto" method="post" id="formularioCadastro">
                 <c:out value="Cliente: ${sessionScope.cliente.nome}"></c:out>
                 <p>Buscar Produto</p>
                 <input type="text" name="txtProduto" placeholder="PRODUTO" class="formulario">

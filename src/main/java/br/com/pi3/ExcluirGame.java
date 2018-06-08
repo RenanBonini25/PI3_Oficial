@@ -2,6 +2,7 @@
 package br.com.pi3;
 
 import br.com.pi3.DAO.DAOGame;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ public class ExcluirGame extends HttpServlet {
             throws ServletException, IOException {
         String idTemp = request.getParameter("id");
         int id = Integer.parseInt(idTemp);
-        DAOGame.excluirGame(id);
+        DAOProduto.excluir(id);
         response.sendRedirect("/pi3-1.0-SNAPSHOT/ListagemGames");
     }
 

@@ -1,9 +1,13 @@
 package br.com.pi3;
 
+import br.com.pi3.Classes.Acessorios;
+import br.com.pi3.Classes.Produto;
 import br.com.pi3.DAO.DAOAcessorio;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -18,7 +22,17 @@ public class ListagemAcessorios extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, ParseException, SQLException {
-        request.setAttribute("Listagem", DAOAcessorio.listar());
+        
+        ArrayList<Acessorios> listaAcessorios = new ArrayList<>();
+        ArrayList<Produto> listaProdutos = DAOProduto.listar();
+        
+        for (Produto produto : listaProdutos) {
+            if (produto instanceof Acessorios) {
+                Acessorios acessorio = (Acessorios) produto;
+                listaAcessorios.add(acessorio);
+            }
+        }
+        request.setAttribute("Listagem", listaAcessorios);
         RequestDispatcher rd = request.getRequestDispatcher("acessorios.jsp");
         rd.forward(request, response);
     }

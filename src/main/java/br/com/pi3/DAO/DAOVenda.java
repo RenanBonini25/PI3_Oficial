@@ -80,4 +80,29 @@ public class DAOVenda {
         }
     }
     
+    public void decrementoEstoque(Venda venda) {
+        String query = "UPDATE produto SET QUANTIDADE = ? "
+                + "WHERE ID_PRODUTO = ?";
+        try (Connection conn = obterConexao()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                for (ItemCarrinho c : venda.getCarrinho()) {
+                    stmt.setInt(1, c.getProduto().getQuantidade());
+                    stmt.setInt(2, c.getProduto().getId());
+                    stmt.executeUpdate();
+                }
+
+                stmt.execute();
+                conn.commit();
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAOCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

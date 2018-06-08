@@ -35,6 +35,11 @@ public class FecharCompra extends HttpServlet {
                 (ArrayList<ItemCarrinho>) session.getAttribute("carrinho");
         Cliente cliente = (Cliente) session.getAttribute("cliente");
         double totalVenda = (double) session.getAttribute("totalVenda");
+        for (ItemCarrinho item : carrinho) {
+            int estoque = item.getProduto().getQuantidade();
+            int estoqueAtual = estoque - item.getQuantidade();
+            item.getProduto().setQuantidade(estoqueAtual);
+        }
         venda.setCliente(cliente);
         venda.setCarrinho(carrinho);
         venda.setTotal(totalVenda);

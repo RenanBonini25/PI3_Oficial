@@ -3,6 +3,7 @@ package br.com.pi3;
 import br.com.pi3.Classes.CategoriaGame;
 import br.com.pi3.Classes.Game;
 import br.com.pi3.Classes.ServicoGame;
+import br.com.pi3.Classes.ServicoProduto;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -29,53 +30,13 @@ public class CadastrarGame extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Game game = new Game();
-        ArrayList<CategoriaGame> categorias = new ArrayList<>();
-        game.setCategorias(categorias);
 
         String nome = request.getParameter("txtNome");
-        
-        if (request.getParameter("catAcao") != null) {
-            CategoriaGame cat = new CategoriaGame();
-            cat.setNome("Ação");
-            cat.setId(1);
-            categorias.add(cat);
-        }
-        if (request.getParameter("catSimulacao") != null) {
-            CategoriaGame cat = new CategoriaGame();
-            cat.setNome("Simulação");
-            cat.setId(2);
-            categorias.add(cat);
-        }
-        if (request.getParameter("catRPG") != null) {
-            CategoriaGame cat = new CategoriaGame();
-            cat.setNome("RPG");
-            cat.setId(3);
-            categorias.add(cat);
-        }
-        if (request.getParameter("catEsportes") != null) {
-            CategoriaGame cat = new CategoriaGame();
-            cat.setNome("Esportes");
-            cat.setId(4);
-            categorias.add(cat);
-        }
-        if (request.getParameter("catAventura") != null) {
-            CategoriaGame cat = new CategoriaGame();
-            cat.setNome("Aventura");
-            cat.setId(5);
-            categorias.add(cat);
-        }
-        if (request.getParameter("catEstrategia") != null) {
-            CategoriaGame cat = new CategoriaGame();
-            cat.setNome("Estratégia");
-            cat.setId(6);
-            categorias.add(cat);
-        }
-        
-
         String desenv = request.getParameter("txtDesenvolvedora");
         String indicClass = request.getParameter("txtClassificacao");
         String plataforma = request.getParameter("Plataforma");
         String compra = request.getParameter("txtPrecoCompra");
+        String categoria = request.getParameter("txtCategoria");
         double precoCompra = Double.parseDouble(compra);
         String venda = request.getParameter("txtPrecoVenda");
         double precoVenda = Double.parseDouble(venda);
@@ -86,12 +47,15 @@ public class CadastrarGame extends HttpServlet {
         game.setDesenvolvedora(desenv);
         game.setPlataforma(plataforma);
         game.setClassIndicativa(indicClass);
+        game.setCategoria(categoria);
         game.setPrecoCompra(precoCompra);
         game.setPrecoVenda(precoVenda);
         game.setQuantidade(quantidade);
+        game.setTipo("Game");
 
         try {
-            ServicoGame.cadastrarGame(game, categorias);
+            ServicoProduto.cadastrarProduto(game);
+            //ServicoGame.cadastrarGame(game, categorias);
         } catch (Exception ex) {
 
         }

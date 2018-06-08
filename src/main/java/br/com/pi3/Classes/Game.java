@@ -7,17 +7,18 @@ public class Game extends Produto {
     private String plataforma;
     private String desenvolvedora;
     private String classIndicativa;
-    private ArrayList<CategoriaGame> categorias;
+    private String categoria;
 
     public Game() {
     }
 
     public Game(String nome, int quantidade, double precoCompra, double precoVenda, 
-            String plataforma, String desenvolvedora, String classIndicativa) {
-        super(nome, quantidade, precoCompra, precoVenda);
+            String tipo, String plataforma, String desenvolvedora, String classIndicativa, String categoria) {
+        super(nome, quantidade, precoCompra, precoVenda, tipo);
         this.plataforma = plataforma;
         this.desenvolvedora = desenvolvedora;
         this.classIndicativa = classIndicativa;
+        this.categoria = categoria;
     }
 
     public String getPlataforma() {
@@ -44,12 +45,12 @@ public class Game extends Produto {
         this.classIndicativa = classIndicativa;
     }
 
-    public ArrayList<CategoriaGame> getCategorias() {
-        return categorias;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCategorias(ArrayList<CategoriaGame> categorias) {
-        this.categorias = categorias;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
     
 }

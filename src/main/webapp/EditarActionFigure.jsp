@@ -34,7 +34,7 @@
             </nav>		
         </div>
         <div id="corpo">
-            <c:forEach items="${obterActionFigure}" var="action">
+            <c:forEach items="${actFig}" var="action">
                 <form action="${pageContext.request.contextPath}/EditarActionFigure" method="post" id="formularioCadastro">
                     <input type="hidden" value="${action.id}" name="id">
                     <input type="text" name="txtNome" value="${action.nome}" placeholder="NOME" class="formulario">
@@ -48,8 +48,8 @@
                     <input type="text" name="txtCor" value="${action.cor}" placeholder="COR" class="formSelect">
                     <input type="number" name="txtQuantidade" value="${action.quantidade}" placeholder="QUANTIDADE" class="formSelect">
                     </br></br>
-                    <input type="number" name="txtPrecoCompra" value="${action.precoCompra}" placeholder="PREÇO COMPRA" class="formSelect">
-                    <input type="number" name="txtPrecoVenda" value="${action.precoVenda}" placeholder="PREÇO VENDA" class="formSelect">
+                    <input type="text" name="txtPrecoCompra" value="${action.precoCompra}" placeholder="PREÇO COMPRA" class="formSelect">
+                    <input type="text" name="txtPrecoVenda" value="${action.precoVenda}" placeholder="PREÇO VENDA" class="formSelect">
                     </br></br>
                     <input type="submit" value="SALVAR" id="botao">
                 </form>

@@ -1,6 +1,7 @@
 package br.com.pi3;
 
 import br.com.pi3.Classes.Acessorios;
+import br.com.pi3.Classes.ServicoProduto;
 import br.com.pi3.DAO.DAOAcessorio;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -39,18 +40,17 @@ public class CadastrarAcessorio extends HttpServlet {
             String descricao = request.getParameter("txtDescricao");
             String plataforma = request.getParameter("txtPlataforma");
             String cor = request.getParameter("txtCor");
+            String tipo = "Acessorio";
             
-            Acessorios acessorio = new Acessorios (nome, quantidade, precoCompra, precoVenda, descricao, plataforma, cor);
+            Acessorios acessorio = new Acessorios (nome, quantidade, precoCompra, precoVenda, tipo, descricao, plataforma, cor);
             
         try {
-            DAOAcessorio.incluir(acessorio);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastrarAcessorio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CadastrarAcessorio.class.getName()).log(Level.SEVERE, null, ex);
+            //DAOAcessorio.incluir(acessorio);
+            ServicoProduto.cadastrarProduto(acessorio);
+        } catch (Exception ex) {
         }
             
-            response.sendRedirect("/pi3-1.0-SNAPSHOT/acessorios.jsp");
+            response.sendRedirect("/pi3-1.0-SNAPSHOT/ListagemAcessorios");
     }
 
     @Override

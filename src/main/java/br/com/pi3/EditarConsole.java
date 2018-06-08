@@ -2,6 +2,7 @@ package br.com.pi3;
 
 import br.com.pi3.Classes.Console;
 import br.com.pi3.DAO.DAOConsole;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,12 +19,7 @@ public class EditarConsole extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         String idTemp = request.getParameter("id");
         int id = Integer.parseInt(idTemp);
-        Console console = new Console();
-        try {
-            request.setAttribute("obterConsole", DAOConsole.obterConsole(id));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EditarConsole.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        request.setAttribute("console", DAOProduto.obter(id));
         RequestDispatcher rd = request.getRequestDispatcher("EditarConsole.jsp");
         try {
             rd.forward(request, response);
@@ -51,10 +47,11 @@ public class EditarConsole extends HttpServlet {
         String descricao = request.getParameter("txtDescricao");
         String fornecedor = request.getParameter("txtFornecedor");
         String cor = request.getParameter("txtCor");
-        Console console = new Console(nome, quantidade, precoCompra, precoVenda, descricao, fornecedor, cor);
+        String tipo = "Console";
+        Console console = new Console(nome, quantidade, precoCompra, precoVenda, tipo, descricao, fornecedor, cor);
         console.setId(id);
         try {
-            DAOConsole.atualizarConsole(console);
+            DAOProduto.atualizar(console);
         } catch (Exception ex) {
 
         }

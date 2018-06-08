@@ -1,6 +1,7 @@
 package br.com.pi3;
 
 import br.com.pi3.Classes.ActionFigure;
+import br.com.pi3.Classes.ServicoProduto;
 import br.com.pi3.DAO.DAOActionFigure;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -38,18 +39,19 @@ public class CadastrarActionFigure extends HttpServlet {
             double precoVenda = Double.parseDouble(request.getParameter("txtPrecoVenda"));
             String descricao = request.getParameter("txtDescricao");
             String fabricante = request.getParameter("txtFabricante");
-            float tamanho = Float.parseFloat(request.getParameter("txtTamanho"));
+            String tamanho = request.getParameter("txtTamanho");
             String cor = request.getParameter("txtCor");
+            String tipo = "ActionFigure";
             
-            ActionFigure action = new ActionFigure (nome, quantidade, precoCompra, precoVenda, descricao, fabricante, tamanho, cor);
+            ActionFigure action = new ActionFigure (nome, quantidade, precoCompra, precoVenda, tipo, descricao, fabricante, tamanho, cor);
             
         try {
-            DAOActionFigure.incluir(action);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastrarActionFigure.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(CadastrarActionFigure.class.getName()).log(Level.SEVERE, null, ex);
+            //DAOActionFigure.incluir(action);
+            ServicoProduto.cadastrarProduto(action);
+        } catch (Exception ex) {
+            
         }
+            
             
             response.sendRedirect("/pi3-1.0-SNAPSHOT/actionFigures.jsp");
     }

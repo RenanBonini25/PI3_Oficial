@@ -199,7 +199,7 @@ public class DAOGame {
                                     categoria.setIdGame(game.getId());
                                     categorias.add(categoria);
                                 }
-                                game.setCategorias(categorias);
+                                //game.setCategorias(categorias);
                             }
                         }
                         listaGames.add(game);
@@ -250,7 +250,7 @@ public class DAOGame {
                                     categoria.setIdGame(game.getId());
                                     categorias.add(categoria);
                                 }
-                                game.setCategorias(categorias);
+                                //game.setCategorias(categorias);
                             }
                         }
                         return game;
@@ -294,7 +294,7 @@ public class DAOGame {
                 }
 
                 conn.commit();
-                ServicoGame.atualizarCategoria(game);
+                //ServicoGame.atualizarCategoria(game);
             } catch (SQLException e) {
                 conn.rollback();
                 throw e;

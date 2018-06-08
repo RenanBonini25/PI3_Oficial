@@ -17,7 +17,7 @@ public class ServicoVenda {
             for (int i = 0; i < venda.getCarrinho().size(); i++) {
                 ItemCarrinho itemCarrinho = venda.getCarrinho().get(i);
                 dao.incluirItemCarrinho(itemCarrinho, idVenda);
-                //dao.decrementoEstoque(venda);
+                dao.decrementoEstoque(venda);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -23,7 +23,7 @@
                             <a href="games.jsp"><li id="itemSub"><img src="_imagens/games.png">Games</li></a>
                             <a href="${pageContext.request.contextPath}/ListagemConsoles"><li id="itemSub"><img src="_imagens/console.png">Consoles</li></a>
                             <a href="${pageContext.request.contextPath}/ListagemAcessorios"><li id="itemSub"><img src="_imagens/acessorio.png">Acessórios</li></a>
-                            <a href="actionFigure.jsp"><li id="itemSub"><img src="_imagens/actionFigure.png">Action Figures</li></a>
+                            <a href="${pageContext.request.contextPath}/ListagemActionFigures"><li id="itemSub"><img src="_imagens/actionFigure.png">Action Figures</li></a>
                         </ul>
                     </li>
                     <a href="usuarios.jsp"><li id="listaMenu"><img src="_imagens/funcionario.png">Usuários</li></a>
@@ -34,7 +34,7 @@
             </nav>		
         </div>
         <div id="corpo">
-            <c:forEach items="${obterAcessorio}" var="acessorio">
+            <c:forEach items="${acessorio}" var="acessorio">
                 <form action="${pageContext.request.contextPath}/EditarAcessorio" method="post" id="formularioCadastro">
                     <input type="hidden" value="${acessorio.id}" name="id">
                     <input type="text" name="txtNome" value="${acessorio.nome}" placeholder="NOME" class="formulario">
@@ -46,8 +46,8 @@
                     <input type="text" name="txtCor" value="${acessorio.cor}" placeholder="COR" class="formSelect">
                     <input type="number" name="txtQuantidade" value="${acessorio.quantidade}" placeholder="QUANTIDADE" class="formSelect">
                     </br></br>
-                    <input type="number" name="txtPrecoCompra" value="${acessorio.precoCompra}" placeholder="PREÇO COMPRA" class="formSelect">
-                    <input type="number" name="txtPrecoVenda" value="${acessorio.precoVenda}" placeholder="PREÇO VENDA" class="formSelect">
+                    <input type="text" name="txtPrecoCompra" value="${acessorio.precoCompra}" placeholder="PREÇO COMPRA" class="formSelect">
+                    <input type="text" name="txtPrecoVenda" value="${acessorio.precoVenda}" placeholder="PREÇO VENDA" class="formSelect">
                     </br></br>
                     <input type="submit" value="SALVAR" id="botao">
                 </form>

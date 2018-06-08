@@ -1,10 +1,14 @@
 package br.com.pi3;
 
+import br.com.pi3.Classes.Console;
+import br.com.pi3.Classes.Produto;
 import br.com.pi3.DAO.DAOConsole;
 import br.com.pi3.DAO.DAOFilial;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -19,7 +23,18 @@ public class ListagemConsoles extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException, ParseException, SQLException {
-        request.setAttribute("Listagem", DAOConsole.listar());
+        
+        ArrayList<Console> listaConsoles = new ArrayList<>();
+        ArrayList<Produto> listaProdutos = DAOProduto.listar();
+        
+        for (Produto produto : listaProdutos) {
+            if (produto instanceof Console) {
+                Console console = (Console) produto;
+                listaConsoles.add(console);
+            }
+        }
+        
+        request.setAttribute("Listagem", listaConsoles);
         RequestDispatcher rd = request.getRequestDispatcher("consoles.jsp");
         rd.forward(request, response);
     }

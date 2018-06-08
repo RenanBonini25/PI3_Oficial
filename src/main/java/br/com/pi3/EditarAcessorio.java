@@ -2,6 +2,7 @@ package br.com.pi3;
 
 import br.com.pi3.Classes.Acessorios;
 import br.com.pi3.DAO.DAOAcessorio;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,12 +19,7 @@ public class EditarAcessorio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         String idTemp = request.getParameter("id");
         int id = Integer.parseInt(idTemp);
-        Acessorios acessorio = new Acessorios();
-        try {
-            request.setAttribute("obterAcessorio", DAOAcessorio.obterAcessorio(id));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EditarAcessorio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        request.setAttribute("acessorio", DAOProduto.obter(id));
         RequestDispatcher rd = request.getRequestDispatcher("EditarAcessorio.jsp");
         try {
             rd.forward(request, response);
@@ -51,10 +47,11 @@ public class EditarAcessorio extends HttpServlet {
         String descricao = request.getParameter("txtDescricao");
         String plataforma = request.getParameter("txtPlataforma");
         String cor = request.getParameter("txtCor");
-        Acessorios acessorio = new Acessorios(nome, quantidade, precoCompra, precoVenda, descricao, plataforma, cor);
+        String tipo = "Acessorio";
+        Acessorios acessorio = new Acessorios(nome, quantidade, precoCompra, precoVenda, tipo, descricao, plataforma, cor);
         acessorio.setId(id);
         try {
-            DAOAcessorio.atualizarAcessorio(acessorio);
+            DAOProduto.atualizar(acessorio);
         } catch (Exception ex) {
 
         }

@@ -37,7 +37,7 @@ public class DAOActionFigure {
                 stmt.setDouble(4, action.getPrecoVenda());
                 stmt.setString(5, action.getDescricao());
                 stmt.setString(6, action.getFabricante());
-                stmt.setFloat(7, action.getTamanho());
+                stmt.setString(7, action.getTamanho());
                 stmt.setString(8, action.getCor());
                 stmt.executeUpdate();
 
@@ -68,7 +68,7 @@ public class DAOActionFigure {
                         action.setNome(resultados.getString("NOME"));
                         action.setDescricao(resultados.getString("DESCRICAO"));
                         action.setFabricante(resultados.getString("FABRICANTE"));
-                        action.setTamanho(resultados.getFloat("TAMANHO"));
+                        action.setTamanho(resultados.getString("TAMANHO"));
                         action.setQuantidade(resultados.getInt("QUANTIDADE"));
                         action.setPrecoCompra(resultados.getDouble("PRECOCOMPRA"));
                         action.setPrecoVenda(resultados.getDouble("PRECOVENDA"));
@@ -98,7 +98,7 @@ public class DAOActionFigure {
                         action.setNome(resultados.getString("NOME"));
                         action.setDescricao(resultados.getString("DESCRICAO"));
                         action.setFabricante(resultados.getString("FABRICANTE"));
-                        action.setTamanho(resultados.getFloat("TAMANHO"));
+                        action.setTamanho(resultados.getString("TAMANHO"));
                         action.setCor(resultados.getString("COR"));
                         action.setQuantidade(resultados.getInt("QUANTIDADE"));
                         action.setPrecoCompra(resultados.getDouble("PRECOCOMPRA"));
@@ -136,7 +136,7 @@ public class DAOActionFigure {
                 stmt.setDouble(4, action.getPrecoVenda());
                 stmt.setString(5, action.getDescricao());
                 stmt.setString(6, action.getFabricante());
-                stmt.setFloat(7, action.getTamanho());
+                stmt.setString(7, action.getTamanho());
                 stmt.setString(8, action.getCor());
                 stmt.setInt(9, action.getId());
                 stmt.executeUpdate();

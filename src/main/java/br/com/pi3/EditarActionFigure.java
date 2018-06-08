@@ -2,6 +2,7 @@ package br.com.pi3;
 
 import br.com.pi3.Classes.ActionFigure;
 import br.com.pi3.DAO.DAOActionFigure;
+import br.com.pi3.DAO.DAOProduto;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,12 +19,7 @@ public class EditarActionFigure extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         String idTemp = request.getParameter("id");
         int id = Integer.parseInt(idTemp);
-        ActionFigure action = new ActionFigure();
-        try {
-            request.setAttribute("obterActionFigure", DAOActionFigure.obterActionFigure(id));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EditarActionFigure.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        request.setAttribute("actFig", DAOProduto.obter(id));
         RequestDispatcher rd = request.getRequestDispatcher("EditarActionFigure.jsp");
         try {
             rd.forward(request, response);
@@ -50,12 +46,13 @@ public class EditarActionFigure extends HttpServlet {
         double precoVenda = Double.parseDouble(request.getParameter("txtPrecoVenda"));
         String descricao = request.getParameter("txtDescricao");
         String fabricante = request.getParameter("txtFabricante");
-        float tamanho = Float.parseFloat(request.getParameter("txtTamanho"));
+        String tamanho = request.getParameter("txtTamanho");
         String cor = request.getParameter("txtCor");
-        ActionFigure action = new ActionFigure(nome, quantidade, precoCompra, precoVenda, descricao, fabricante, tamanho, cor);
+        String tipo = "ActionFigure";
+        ActionFigure action = new ActionFigure(nome, quantidade, precoCompra, precoVenda, tipo, descricao, fabricante, tamanho, cor);
         action.setId(id);
         try {
-            DAOActionFigure.atualizarActionFigure(action);
+            DAOProduto.atualizar(action);
         } catch (Exception ex) {
 
         }

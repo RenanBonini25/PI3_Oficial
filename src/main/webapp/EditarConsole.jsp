@@ -34,7 +34,7 @@
             </nav>		
         </div>
         <div id="corpo">
-            <c:forEach items="${obterConsole}" var="console">
+            <c:forEach items="${console}" var="console">
                 <form action="${pageContext.request.contextPath}/EditarConsole" method="post" id="formularioCadastro">
                     <input type="hidden" value="${console.id}" name="id">
                     <input type="text" name="txtNome" value="${console.nome}" placeholder="NOME" class="formulario">
@@ -46,8 +46,8 @@
                     <input type="text" name="txtCor" value="${console.cor}" placeholder="COR" class="formSelect">
                     <input type="number" name="txtQuantidade" value="${console.quantidade}" placeholder="QUANTIDADE" class="formSelect">
                     </br></br>
-                    <input type="number" name="txtPrecoCompra" value="${console.precoCompra}" placeholder="PREÇO COMPRA" class="formSelect">
-                    <input type="number" name="txtPrecoVenda" value="${console.precoVenda}" placeholder="PREÇO VENDA" class="formSelect">
+                    <input type="text" name="txtPrecoCompra" value="${console.precoCompra}" placeholder="PREÇO COMPRA" class="formSelect">
+                    <input type="text" name="txtPrecoVenda" value="${console.precoVenda}" placeholder="PREÇO VENDA" class="formSelect">
                     </br></br>
                     <input type="submit" value="SALVAR" id="botao">
                 </form>

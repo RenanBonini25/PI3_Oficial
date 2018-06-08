@@ -12,8 +12,8 @@ public class Acessorios extends Produto {
     ;
     
     public Acessorios(String nome, int quantidade, double precoCompra, double precoVenda,
-            String descricao, String plataforma, String cor) {
-        super(nome, quantidade, precoCompra, precoVenda);
+            String tipo, String descricao, String plataforma, String cor) {
+        super(nome, quantidade, precoCompra, precoVenda, tipo);
         this.descricao = descricao;
         this.plataforma = plataforma;
         this.cor = cor;

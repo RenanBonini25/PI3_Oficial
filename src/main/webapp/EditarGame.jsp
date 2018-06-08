@@ -34,7 +34,7 @@
             </nav>		
         </div>
         <div id="corpo">
-            <c:forEach items="${obterGame}" var="game">
+            <c:forEach items="${game}" var="game">
             <form action="${pageContext.request.contextPath}/EditarGame" method="post" id="formularioCadastro">
                 <input type="hidden" value="${game.id}" name="id">
                 <input type="text" value="${game.nome}" name="txtNome" placeholder="NOME" class="formulario">
@@ -55,28 +55,8 @@
                 <input type="text" value="${game.precoVenda}" name="txtPrecoVenda" placeholder="PREÇO VENDA" class="formSelect">
                 </br></br>
                 <input type="text" value="${game.classIndicativa}" name="txtClassificacao" placeholder="CLASSIFICAÇÃO INDICATIVA" class="formSelect">
-                <fieldset class="categoria">
-                    <legend>Categorias</legend>
-                    <div>
-                        <input type="checkbox" id="acao" name="catAcao" value="acao">
-                        <label for="acao">Ação</label>
-                        <input type="checkbox" id="aventura" name="catAventura" value="aventura">
-                        <label for="aventura">Aventura</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="estrategia" name="catEstrategia" value="estrategia">
-                        <label for="estrategia">Estratégia</label>
-                        <input type="checkbox" id="rpg" name="catRPG" value="rpg">
-                        <label for="rpg">RPG</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="esportes" name="catEsportes" value="esportes">
-                        <label for="esportes">Esportes</label>
-                        <input type="checkbox" id="simulacao" name="catSimulacao" value="simulacao">
-                        <label for="simulacao">Simulação</label>
-                    </div>
-                </fieldset>
-                <br>
+                <input type="text" value="${game.categoria}" name="txtCategoria" placeholder="CATEGORIA" class="formSelect">
+                </br></br>
                 <input type="submit" value="SALVAR" id="botao">
             </form>
             </c:forEach>

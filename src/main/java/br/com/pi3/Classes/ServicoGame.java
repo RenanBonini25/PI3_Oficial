@@ -38,15 +38,15 @@ public class ServicoGame {
         return game;
     }
     
-    public static void atualizarCategoria(Game game) {
-        ArrayList<CategoriaGame> categorias = game.getCategorias();
-        for (int i = 0; i < categorias.size(); i++) {
-            categorias.get(i).setIdGame(game.getId());
-            try {
-                DAOGame.incluirGameCat(categorias.get(i));
-            } catch (ClassNotFoundException ex) {
-            } catch (SQLException ex) {
-            }
-        }
-    }
+//    public static void atualizarCategoria(Game game) {
+//        ArrayList<CategoriaGame> categorias = game.getCategorias();
+//        for (int i = 0; i < categorias.size(); i++) {
+//            categorias.get(i).setIdGame(game.getId());
+//            try {
+//                DAOGame.incluirGameCat(categorias.get(i));
+//            } catch (ClassNotFoundException ex) {
+//            } catch (SQLException ex) {
+//            }
+//        }
+//    }
 }

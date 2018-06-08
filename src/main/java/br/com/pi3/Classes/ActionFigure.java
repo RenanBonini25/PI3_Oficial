@@ -4,7 +4,7 @@ public class ActionFigure extends Produto {
 
     String descricao;
     String fabricante;
-    float tamanho;
+    String tamanho;
     String cor;
 
     public ActionFigure() {
@@ -13,8 +13,8 @@ public class ActionFigure extends Produto {
     ;
     
     public ActionFigure(String nome, int quantidade, double precoCompra, double precoVenda,
-            String descricao, String fabricante, float tamanho, String cor) {
-        super(nome, quantidade, precoCompra, precoVenda);
+            String tipo, String descricao, String fabricante, String tamanho, String cor) {
+        super(nome, quantidade, precoCompra, precoVenda, tipo);
         this.descricao = descricao;
         this.fabricante = fabricante;
         this.tamanho = tamanho;
@@ -37,11 +37,11 @@ public class ActionFigure extends Produto {
         this.fabricante = fabricante;
     }
 
-    public float getTamanho() {
+    public String getTamanho() {
         return tamanho;
     }
 
-    public void setTamanho(float tamanho) {
+    public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
     }
 
