@@ -35,8 +35,8 @@ public class CadastrarActionFigure extends HttpServlet {
           
             String nome = request.getParameter("txtNome");
             int quantidade = Integer.parseInt(request.getParameter("txtQuantidade"));
-            double precoCompra = Double.parseDouble(request.getParameter("txtPrecoCompra"));
-            double precoVenda = Double.parseDouble(request.getParameter("txtPrecoVenda"));
+            double precoCompra = Double.parseDouble(request.getParameter("txtPrecoCompra").replaceAll(",", "."));
+            double precoVenda = Double.parseDouble(request.getParameter("txtPrecoVenda").replaceAll(",", "."));
             String descricao = request.getParameter("txtDescricao");
             String fabricante = request.getParameter("txtFabricante");
             String tamanho = request.getParameter("txtTamanho");
@@ -53,7 +53,7 @@ public class CadastrarActionFigure extends HttpServlet {
         }
             
             
-            response.sendRedirect("/pi3-1.0-SNAPSHOT/actionFigures.jsp");
+            response.sendRedirect("/pi3-1.0-SNAPSHOT/ListagemActionFigures");
     }
 
     @Override

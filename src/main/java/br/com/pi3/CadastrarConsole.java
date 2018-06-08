@@ -33,8 +33,8 @@ public class CadastrarConsole extends HttpServlet {
 
         String nome = request.getParameter("txtNome");
         int quantidade = Integer.parseInt(request.getParameter("txtQuantidade"));
-        double precoCompra = Double.parseDouble(request.getParameter("txtPrecoCompra"));
-        double precoVenda = Double.parseDouble(request.getParameter("txtPrecoVenda"));
+        double precoCompra = Double.parseDouble(request.getParameter("txtPrecoCompra").replaceAll(",", "."));
+        double precoVenda = Double.parseDouble(request.getParameter("txtPrecoVenda").replaceAll(",", "."));
         String descricao = request.getParameter("txtDescricao");
         String fornecedor = request.getParameter("txtFornecedor");
         String cor = request.getParameter("txtCor");

@@ -26,8 +26,8 @@
                             <a href="${pageContext.request.contextPath}/ListagemActionFigures"><li id="itemSub"><img src="_imagens/actionFigure.png">Action Figures</li></a>
                         </ul>
                     </li>
-                    <a href="usuarios.jsp"><li id="listaMenu"><img src="_imagens/funcionario.png">Usuários</li></a>
-                    <a href="filiais.jsp"><li id="listaMenu"><img src="_imagens/filial.png">Filiais</li></a>
+                    <a href="${pageContext.request.contextPath}/ListagemUsuarios"><li id="listaMenu"><img src="_imagens/funcionario.png">Usuários</li></a>
+                    <a href="${pageContext.request.contextPath}/ListagemFiliais"><li id="listaMenu"><img src="_imagens/filial.png">Filiais</li></a>
                     <a href="Vendas_ProcurarCliente.jsp"><li id="listaMenu"><img src="_imagens/venda.png">Vendas</li></a>
                     <a href="${pageContext.request.contextPath}/GerarRelatorios.jsp"><li id="listaMenu"><img src="_imagens/relatorio.png">Relatório</li></a>
                 </ul>
@@ -37,19 +37,19 @@
             <form action="" method="" id="formularioCadastro">
                 <table cellpadding="10">
                     <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Sexo</th>
-                        <th>Data Nascimento</th>
-                        <th>Estado Civil</th>
-                        <th>Endereço</th>
-                        <th>Complemento</th>
-                        <th>Número</th>
-                        <th>Bairro</th>
-                        <th>CEP</th>
-                        <th>Cidade</th>
-                        <th>Estado</th>
-                        <th>Ações</th>
+                        <td><strong>Nome</strong></td>
+                        <td><strong>CPF</strong></td>
+                        <td><strong>Sexo</strong></td>
+                        <td><strong>Data Nascimento</strong></td>
+                        <td><strong>Estado Civil</strong></td>
+                        <td><strong>Endereço</strong></td>
+                        <td><strong>Complemento</strong></td>
+                        <td><strong>Número</strong></td>
+                        <td><strong>Bairro</strong></td>
+                        <td><strong>CEP</strong></td>
+                        <td><strong>Cidade</strong></td>
+                        <td><strong>Estado</strong></td>
+                        <td><strong>Ações</strong></td>
                     </tr>
                     <c:forEach items="${listaClientes}" var="cliente">
                         <tr>
@@ -67,7 +67,7 @@
                             <td>${cliente.estado}</td>
                             <td>
                                 <a href="SelecionarCliente?id=${cliente.id}">Selecionar</a> 
-                                
+
                             </td>
                         </tr>
                     </c:forEach>

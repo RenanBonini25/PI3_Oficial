@@ -23,8 +23,8 @@ public class DAOCliente {
 
     public static long incluir(Cliente cliente) throws SQLException, ClassNotFoundException {
         String query = "INSERT INTO cliente (NOME, CPF, SEXO, DTNASCIMENTO, ESTADOCIVIL, ENDERECO,"
-                + "COMPLEMENTO, NUMERO, BAIRRO, CEP, CIDADE, ESTADO)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+                + "COMPLEMENTO, NUMERO, BAIRRO, CEP, CIDADE, ESTADO, ATIVO)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
         long idCliente = 0;
 
         try (Connection conn = obterConexao()) {
@@ -42,6 +42,7 @@ public class DAOCliente {
                 stmt.setString(10, cliente.getCep());
                 stmt.setString(11, cliente.getCidade());
                 stmt.setString(12, cliente.getEstado());
+                stmt.setBoolean(13, true);
                 stmt.executeUpdate();
 
                 try (ResultSet chave = stmt.getGeneratedKeys()) {
@@ -144,11 +145,12 @@ public class DAOCliente {
 
     public static ArrayList<Cliente> obterCliente(int id) {
         ArrayList<Cliente> clientes = new ArrayList<>();
-        String query = "SELECT * FROM CLIENTE WHERE ID_CLIENTE = ?";
+        String query = "SELECT * FROM CLIENTE WHERE ID_CLIENTE = ? AND ATIVO = ?";
         try (Connection conn = obterConexao()) {
             conn.setAutoCommit(false);
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setInt(1, id);
+                stmt.setBoolean(1, true);
                 try (ResultSet resultados = stmt.executeQuery()) {
                     while (resultados.next()) {
                         Cliente cliente = new Cliente();
@@ -258,10 +260,11 @@ public class DAOCliente {
     }
 
     public static void excluirCliente(int id) {
-        String query = "DELETE FROM CLIENTE WHERE ID_CLIENTE = ?";
+        String query = "UPDATE CLIENTE SET ATIVO = ? WHERE ID_CLIENTE = ?";
         try (Connection conn = obterConexao()) {
             try (PreparedStatement stmtCategoria = conn.prepareStatement(query)) {
-                stmtCategoria.setInt(1, id);
+                stmtCategoria.setBoolean(1, false);
+                stmtCategoria.setInt(2, id);
                 stmtCategoria.executeUpdate();
             }
         } catch (ClassNotFoundException ex) {

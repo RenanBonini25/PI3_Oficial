@@ -35,10 +35,10 @@ public class CadastrarGame extends HttpServlet {
         String desenv = request.getParameter("txtDesenvolvedora");
         String indicClass = request.getParameter("txtClassificacao");
         String plataforma = request.getParameter("Plataforma");
-        String compra = request.getParameter("txtPrecoCompra");
+        String compra = request.getParameter("txtPrecoCompra").replaceAll(",", ".");
         String categoria = request.getParameter("txtCategoria");
         double precoCompra = Double.parseDouble(compra);
-        String venda = request.getParameter("txtPrecoVenda");
+        String venda = request.getParameter("txtPrecoVenda").replaceAll(",", ".");
         double precoVenda = Double.parseDouble(venda);
         String qtd = request.getParameter("txtQuantidade");
         int quantidade = Integer.parseInt(qtd);
