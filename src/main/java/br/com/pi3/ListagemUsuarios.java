@@ -19,7 +19,7 @@ public class ListagemUsuarios extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("Listagem", DAOUsuario.listar());
-        RequestDispatcher rd = request.getRequestDispatcher("ListagemUsuarios.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("usuarios.jsp");
         rd.forward(request, response);
     }
 

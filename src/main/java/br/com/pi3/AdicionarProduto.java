@@ -33,23 +33,31 @@ public class AdicionarProduto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        NumberFormat df = new DecimalFormat("#0.00");   
-            String idTemp = request.getParameter("id");
-            int id = Integer.parseInt(idTemp);
-            Produto produto = ServicoProduto.obter(id);
+        DecimalFormat df = new DecimalFormat("#0.00");
+        String idTemp = request.getParameter("id");
+        int id = Integer.parseInt(idTemp);
+        Produto produto = ServicoProduto.obter(id);
+        String qtdTemp = request.getParameter("qtdProduto");
+        int qtd = Integer.parseInt(qtdTemp);
+        int estoque = produto.getQuantidade();
+        if (qtd <= estoque) {
+            double subtotal = produto.getPrecoVenda() * qtd;
+            String sub = df.format(subtotal).replaceAll(",", ".");
+            double subAtual = Double.parseDouble(sub);
 
-            String qtdTemp = request.getParameter("qtdProduto");
-            int qtd = Integer.parseInt(qtdTemp);
             ItemCarrinho itemCarrinho = new ItemCarrinho();
             itemCarrinho.setProduto(produto);
             itemCarrinho.setQuantidade(qtd);
-            itemCarrinho.setSubtotal(produto.getPrecoVenda() * qtd);
+            itemCarrinho.setSubtotal(subAtual);
             HttpSession session = request.getSession();
             ArrayList<ItemCarrinho> carrinho
                     = (ArrayList<ItemCarrinho>) session.getAttribute("carrinho");
 
             carrinho.add(itemCarrinho);
-        response.sendRedirect("/pi3-1.0-SNAPSHOT/MostrarCarrinho");
+            response.sendRedirect("/pi3-1.0-SNAPSHOT/MostrarCarrinho");
+        } else {
+            response.sendRedirect("/pi3-1.0-SNAPSHOT/ErroEstoque.jsp");
+        }
 
     }
 

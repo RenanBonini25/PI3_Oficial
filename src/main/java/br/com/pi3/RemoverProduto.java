@@ -1,38 +1,33 @@
+
 package br.com.pi3;
 
-import br.com.pi3.Classes.Game;
-import br.com.pi3.Classes.Produto;
-import br.com.pi3.DAO.DAOGame;
-import br.com.pi3.DAO.DAOProduto;
+import br.com.pi3.Classes.ItemCarrinho;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "ListagemGames", urlPatterns = {"/ListagemGames"})
-public class ListagemGames extends HttpServlet {
+@WebServlet(name = "RemoverProduto", urlPatterns = {"/RemoverProduto"})
+public class RemoverProduto extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        ArrayList<Game> listaGames = new ArrayList<>();
-        ArrayList<Produto> listaProdutos = DAOProduto.listar();
-        
-        for (Produto produto : listaProdutos) {
-            if (produto instanceof Game) {
-                Game game = (Game) produto;
-                listaGames.add(game);
+
+        String idTemp = request.getParameter("id");
+        int idProduto = Integer.parseInt(idTemp);
+        HttpSession session = request.getSession();
+        ArrayList<ItemCarrinho> carrinho = 
+                (ArrayList<ItemCarrinho>) session.getAttribute("carrinho");
+        for (int i = 0; i < carrinho.size(); i++) {
+            if (carrinho.get(i).getProduto().getId() == idProduto) {
+                carrinho.remove(i);
             }
         }
-
-        request.setAttribute("Listagem", listaGames);
-        RequestDispatcher rd = request.getRequestDispatcher("games.jsp");
-        rd.forward(request, response);
-
+        response.sendRedirect("/pi3-1.0-SNAPSHOT/MostrarCarrinho");
     }
 
     @Override

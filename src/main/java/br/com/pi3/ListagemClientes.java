@@ -30,7 +30,7 @@ public class ListagemClientes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("Listagem", DAOCliente.listar());
-        RequestDispatcher rd = request.getRequestDispatcher("ListagemClientes.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("clientes.jsp");
         rd.forward(request, response);
     }
 

@@ -3,6 +3,7 @@ package br.com.pi3;
 
 import br.com.pi3.Classes.ItemCarrinho;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +23,7 @@ public class MostrarCarrinho extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        DecimalFormat df = new DecimalFormat("#0.00");
         HttpSession session = request.getSession();
         ArrayList<ItemCarrinho> carrinho = 
                 (ArrayList<ItemCarrinho>) session.getAttribute("carrinho");
@@ -30,7 +31,9 @@ public class MostrarCarrinho extends HttpServlet {
         for (ItemCarrinho item : carrinho) {
             total += (item.getProduto().getPrecoVenda() * item.getQuantidade());
         }
-        session.setAttribute("totalVenda", total);
+        String totalTemp = df.format(total).replaceAll(",", ".");
+        double totalFormat = Double.parseDouble(totalTemp);
+        session.setAttribute("totalVenda", totalFormat);
         response.sendRedirect("Carrinho.jsp");
     }
 

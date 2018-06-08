@@ -15,7 +15,7 @@ public class ListagemFiliais extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("Listagem", DAOFilial.listar());
-        RequestDispatcher rd = request.getRequestDispatcher("ListagemFiliais.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("filiais.jsp");
         rd.forward(request, response);
     }
 

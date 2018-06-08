@@ -4,7 +4,7 @@
 <html lang="PT-BR">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Listagem de Filiais</title>
+        <title>Listagem de Usuários</title>
         <link rel="stylesheet" type="text/css" href="_css/estilo.css">
     </head>
     <body>
@@ -34,36 +34,12 @@
             </nav>		
         </div>
         <div id="corpo">
-            <table cellpadding="10">
-                <tr>
-                    <th>Nome</th>
-                    <th>CNPJ</th>
-                    <th>Endereço</th>
-                    <th>Complemento</th>
-                    <th>Número</th>
-                    <th>Bairro</th>
-                    <th>CEP</th>
-                    <th>Cidade</th>
-                    <th>Estado</th>
-                    <th>Ações</th>
-                </tr>
-                <c:forEach items="${Listagem}" var="filial">
-                    <tr>
-                        <td>${filial.nome}</td>
-                        <td>${filial.cnpj}</td>
-                        <td>${filial.endereco}</td>
-                        <td>${filial.complemento}</td>
-                        <td>${filial.numero}</td>
-                        <td>${filial.bairro}</td>
-                        <td>${filial.cep}</td>
-                        <td>${filial.cidade}</td>
-                        <td>${filial.estado}</td>
-                        <td>
-                            <a href="EditarFilial?id=${filial.id}">Editar</a> 
-                            <a href="ExcluirFilial?id=${filial.id}">Deletar</a> 
-                        </td>
-                    </tr>
-                </c:forEach>
+            <table cellpadding='10'>
+                <h2>Quantidade inválida!</h2>
+                <form>
+                    <button onclick="location.href = 'Vendas_ProcurarProduto.jsp'" type="button">
+                        Voltar</button>
+                </form>
             </table>
         </div>
     </body>
